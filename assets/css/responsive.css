@@ -1,0 +1,868 @@
+/*Laptop Device :1200*/
+@media (min-width: 1200px) and (max-width: 1500px){
+/*Index page css*/
+.single-slider {
+	height: 600px;
+}
+.list__categories .desc__categories {
+	left: 30px;
+	right: 30px;
+}
+.brand-active .owl-nav > div {
+	left: 0;
+}
+.brand-active .owl-nav > .owl-next {
+	left: auto;
+	right: 0px;
+}
+/* index page 2 css*/
+.pr-230 {
+	padding-right: 100px;
+}
+.pl-230 {
+	padding-left: 100px;
+}
+.single-slider.single-slider-2 {
+	height: 600px;
+}
+
+}
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1199px) {
+/*Index Page CSS*/
+.main-menu > li > a {
+	font-size: 14px;
+	font-weight: 500;
+	padding: 30px 8px;
+}
+.book-now-btn a {
+	font-size: 14px;
+}
+.single-slider {
+	height: 500px;
+}
+.box-select .select {
+	margin-right: 20px;
+	width: 150px;
+}
+form.search-form {
+	padding: 50px 25px;
+	margin-top: -75px;
+}
+.search-form button {
+	line-height: 42px;
+}
+.list__categories .desc__categories {
+	left: 20px;
+	right: 20px;
+}
+.list__categories .desc__categories .categories__content {
+	padding: 30px 30px 30px;
+}
+.service-menu-area {
+	margin-left: -50px;
+}
+.service-img img {
+    width: 100%;
+}
+.service-menu-area ul li a .service-title {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+.service-menu-area ul li a .text {
+	font-size: 13px;
+	line-height: 20px;
+}
+.service-menu-area ul li a {
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+.service-menu-area ul li a .service-icon:hover, .service-menu-area ul li a.active .service-icon {
+	box-shadow: none;
+}
+.social-network > li {
+	margin: 0 5px;
+}
+.blg-img img {
+	width: 100%;
+}
+.blog-text {
+	padding: 25px;
+	margin-left: 40px;
+}
+/*Index Page 2 CSS*/
+.pr-230 {
+	padding-right: 15px;
+}
+.pl-230 {
+	padding-left: 15px;
+}
+.booking-area-style-2 form.search-form {
+	margin-top: -65px;
+}
+.booking-area-style-2 .box-select .select::after {
+	top: 72px;
+	right: 10px;
+}
+.single-slider.single-slider-2 {
+	height: 500px;
+}
+.box-select .select label {
+	font-size: 20px;
+	margin-bottom: 15px;
+}
+.booking-area-style-2 .box-select input {
+	font-size: 20px;
+}
+.booking-area-style-2 .select > select {
+	font-size: 20px;
+}
+.booking-area-style-2 .box-select .select::after {
+	top: 70px;
+	color: #fff;
+}
+.booking-area-style-2 .search.default-btn {
+	font-size: 20px;
+}
+.service-style-2 .service-menu-area {
+	margin-left: 0;
+	padding: 0 20px;
+}
+.single-blog-style-2 .blog-post-info {
+	bottom: 52%;
+}
+/*Room Grid Page CSS*/
+.list__categories.single-room .desc__categories .categories__content {
+	padding: 20px 30px 20px;
+}
+/*Product List Page CSS*/
+.room-list-content h4 {
+	padding: 1px 0 8px;
+}
+.room-list-content ul li p {
+	margin-bottom: 7px;
+}
+.room-book-action {
+	padding: 12px 0;
+}
+.room-list-content h3 {
+	margin-top: 20px;
+}
+/*Blog Page CSS*/
+blockquote {
+	padding: 60px 65px;
+	padding-left: 75px;
+	padding-top: 60px;
+}
+blockquote::before {
+	left: 5%;
+	top: 12%;
+}
+
+    
+    
+    
+}
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+/*Section Spacing CSS*/
+.about-area.pt-100.pb-95 {
+	padding-top: 70px;
+	padding-bottom: 130px;
+}
+.our-favorite-room-area.pb-95 {
+	padding-bottom: 75px;
+}
+.our-awesome-services.pb-100 {
+	padding-bottom: 80px;
+}
+.fun-factor-area.fun-bg.mb-95 {
+	margin-bottom: 75px;
+}
+.team-area.pb-65 {
+	padding-bottom: 45px;
+}
+.our-gallery-area.pb-95 {
+	padding-bottom: 75px;
+}
+.pricing-area.pb-65 {
+	padding-bottom: 45px;
+}
+.blog-area.pb-100 {
+	padding-bottom: 80px;
+}
+.about-area.about-style-2.pt-100.pb-120 {
+	padding-top: 70px;
+	padding-bottom: 180px;
+}
+.discount-room-area.discount-bg.pt-100.pb-70 {
+	padding-top: 80px;
+	padding-bottom: 50px;
+}
+.team-area.pt-95.pb-65 {
+	padding-top: 75px;
+}
+.blog-area.pb-70 {
+	padding-bottom: 50px;
+}
+.room-grid-area.pt-95.pb-100 {
+	padding-top: 75px;
+	padding-bottom: 80px;
+}
+.room-list-area.pt-95.pb-100 {
+	padding-top: 75px;
+	padding-bottom: 80px;
+}
+.room-deatils-area.pt-100.pb-100 {
+	padding-top: 80px;
+	padding-bottom: 10px;
+}
+.location-area.pt-95.pb-100 {
+	padding-top: 75px;
+	padding-bottom: 80px;
+}
+.event-area.pt-95.pb-100 {
+	padding-top: 75px;
+	padding-bottom: 80px;
+}
+.blog-area.pt-95.pb-100 {
+	padding-top: 75px;
+	padding-bottom: 80px;
+}
+.blog-area.pt-100.pb-100 {
+	padding: 80px 0;
+}
+.blog-area.pt-100.pb-100 {
+	padding-top: 80px;
+	padding-bottom: 0;
+}
+.blog-area.blog-no-sidebar.pt-100.pb-100 {
+	padding-top: 80px;
+	padding-bottom: 20px;
+}
+.team-area.pt-95.pb-100 {
+	padding-top: 75px;
+	padding-bottom: 80px;
+}
+.contact-us-area.pt-100.pb-100 {
+	padding-top: 80px;
+	padding-bottom: 65px;
+}
+/*Index Page CSS*/
+.pr-230 {
+	padding-right: 15px;
+}
+.pl-230 {
+	padding-left: 15px;
+}
+.header-logo {
+	padding: 0;
+}
+.book-now-btn {
+	padding-right: 60px;
+}
+.mobile-menu .mean-bar .meanmenu-reveal {
+	position: absolute;
+	top: -70px;
+}
+.single-slider {
+	height: 500px;
+}
+form.search-form {
+	padding: 50px 10px;
+}  
+.box-select .select {
+	margin-right: 5px;
+	width: 120px;
+}
+.search-form button {
+	width: 170px;
+    line-height: 42px;
+}
+.welcome-image-area {
+	margin-top: 50px;
+}
+.list__categories .desc__categories {
+	left: 20px;
+	right: 20px;
+}
+.list__categories .desc__categories .categories__content {
+    padding: 70px 30px 70px;
+}
+.service-img {
+	margin-bottom: 50px;
+}
+.service-img img {
+	width: 100%;
+}
+.service-menu-area ul li{
+    padding-left: 20px;
+}
+.service-menu-area ul li:nth-child(2){
+    margin-left: 0px;
+}
+.service-menu-area ul li:nth-child(3){
+    margin-left: 0px;
+}
+.service-menu-area ul li:nth-child(4){
+    margin-left: 0px;
+}
+.service-menu-area ul li:last-child a {
+    margin-bottom: 50px;
+       
+}
+.blg-img img {
+	width: 100%;
+}
+.blog-text {
+	padding: 20px;
+	margin-left: 35px;
+}
+.blog-text > p {
+	font-size: 14px;
+	line-height: 26px;
+}
+/*Index Page 2 CSS*/
+.header-absolute {
+	position: static;
+}
+.header-style-2 .book-now-btn a{
+    color: #021832;
+    border-color: #021832;
+}
+.header-style-2 .book-now-btn a:hover{
+    color: #fff;        
+} 
+.single-slider.single-slider-2 {
+	height: 400px;
+}
+.hero-slider-content.slider-content-2 h1 {
+	font-size: 56px;
+	line-height: 66px;
+}
+.booking-area-style-2 form.search-form {
+	margin-top: -60px;
+}
+.booking-area-style-2 .box-select .select {
+	padding: 15px;
+}
+.booking-area-style-2 .box-select .select::after {
+	top: 60px;
+	color: #fff;
+	right: 10px;
+}
+.box-select .select label {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.booking-area-style-2 .box-select input {
+	padding-left: 0;
+	font-size: 14px;
+}
+.booking-area-style-2 .select > select {
+	font-size: 14px;
+}
+.booking-area-style-2 .search.default-btn {
+	font-size: 14px;
+}
+.about-style-2 .about-container {
+	padding-left: 0;
+}
+.about-style-2 .about-container h3 {
+	margin-left: 0;
+	margin-bottom: 20px;
+}
+.about-style-2 .welcome-image-area {
+	text-align: left;
+}
+.about-container p {
+	max-width: 600px;
+}
+.discount-content {
+	margin-bottom: 30px;
+}
+/*Room Grid Page CSS*/
+.list__categories.single-room .desc__categories .categories__content {
+	padding: 30px 30px 30px;
+}
+.question-area {
+	margin-bottom: 60px;
+}
+/*Blog Page CSS*/
+.comment-box {
+	margin-bottom: 60px;
+}
+.blog-sidebar.right-sidebar {
+	padding: 0;
+}
+blockquote {
+	padding: 60px 85px;
+	padding-left: 130px;
+	padding-top: 90px;
+}
+/*contact page css*/
+.contact-address {
+    padding-right: 15px;
+}
+.contact-information {
+    padding: 60px 35px;
+}
+blockquote {
+    padding: 60px 85px;
+    padding-left: 130px;
+    padding-top: 90px;
+}
+.footer-menu {
+    padding-left: 15px;
+}
+.single-working::after {
+    right: 0px;
+}
+
+
+    
+}
+/* small mobile :320px. */
+@media (max-width: 767px) {
+.container {width:300px}
+/*Section Spacing CSS*/
+.about-area.pt-100.pb-95 {
+	padding-top: 50px;
+	padding-bottom: 115px;
+}
+.our-favorite-room-area.pb-95 {
+	padding-bottom: 55px;
+}
+.our-awesome-services.pb-100 {
+	padding-bottom: 60px;
+}
+.fun-factor-area.fun-bg.mb-95 {
+	margin-bottom: 55px;
+}
+.team-area.pb-65 {
+	padding-bottom: 25px;
+}
+.our-gallery-area.pb-95 {
+	padding-bottom: 55px;
+}
+.pricing-area.pb-65 {
+	padding-bottom: 25px;
+}
+.blog-area.pb-100 {
+	padding-bottom: 30px;
+}
+.about-area.about-style-2.pt-100.pb-120 {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.discount-room-area.discount-bg.pt-100.pb-70 {
+	padding-top: 60px;
+	padding-bottom: 30px;
+}
+.team-area.pt-95.pb-70 {
+	padding-top: 55px;
+}
+.blog-area.pb-70 {
+	padding-bottom: 30px;
+}
+.room-grid-area.pt-95.pb-100 {
+	padding-top: 55px;
+	padding-bottom: 60px;
+}
+.room-list-area.pt-95.pb-100 {
+	padding-top: 55px;
+	padding-bottom: 60px;
+}
+.room-deatils-area.pt-100.pb-100 {
+	padding-top: 60px;
+	padding-bottom: 10px;
+}
+.location-area.pt-95.pb-100 {
+	padding-top: 55px;
+	padding-bottom: 60px;
+}
+.event-area.pt-95.pb-100 {
+	padding-top: 55px;
+	padding-bottom: 60px;
+}
+.blog-area.pt-95.pb-100 {
+	padding-top: 55px;
+	padding-bottom: 60px;
+}
+.blog-area.pt-100.pb-100 {
+	padding-top: 60px;
+	padding-bottom: 0;
+}
+.blog-area.blog-no-sidebar.pt-100.pb-100 {
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+.team-area.pt-95.pb-100 {
+	padding-top: 55px;
+	padding-bottom: 60px;
+}
+.contact-us-area.pt-100.pb-100 {
+	padding-top: 60px;
+	padding-bottom: 45px;
+}
+.widget.mb-60 {
+	margin-bottom: 40px;
+}
+/*Index Page CSS*/
+.default-header-area.header-sticky.is-sticky {
+	position: static;
+	box-shadow: none;
+	animation: none;
+    padding-top: 15px;
+}
+.header-logo {
+	padding: 0;
+	text-align: center;
+}
+.book-now-btn {
+	text-align: left !important;
+}
+.mobile-menu .mean-bar .meanmenu-reveal {
+	position: absolute;
+	top: -67px;
+}
+.single-slider {
+	height: 400px;
+}
+.hero-slider-content > h1 {
+	font-size: 26px;
+}
+.hero-slider-content > p {
+	font-size: 14px;
+	line-height: 22px;
+	padding: 0 10px;
+}
+form.search-form {
+	margin-top: 60px;
+	padding: 50px 20px;
+}
+.box-select .select {
+	margin-right: 0;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.search-form button {
+	width: 100%;
+}
+.welcome-image-area {
+	margin-top: 50px;
+}
+.first-welcome-image img {
+	width: 100%;
+}
+.secound-iamge-area img {
+	width: 100%;
+}
+.section-title > h3 {
+	font-size: 32px;
+}
+.list__categories .desc__categories {
+	left: 20px;
+	right: 20px;
+}
+.list__categories .desc__categories .categories__content {
+	padding: 30px 30px 30px;
+}
+.service-img {
+	margin-bottom: 50px;
+}
+.service-img img {
+	width: 100%;
+}
+.service-menu-area ul li:nth-child(2){
+    margin-left: 0px;
+}
+.service-menu-area ul li:nth-child(3){
+    margin-left: 0px;
+}
+.service-menu-area ul li:nth-child(4){
+    margin-left: 0px;
+}
+.service-menu-area ul li{
+    padding: 0 10px;        
+}
+.service-menu-area ul li:last-child a{
+    margin-bottom: 50px;
+}
+.service-menu-area ul li a .service-title {
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+.service-menu-area ul li a .text {
+	font-size: 13px;
+	line-height: 20px;
+}
+.fun-facttor-number > h2 {
+	font-size: 48px;
+	line-height: 48px;
+}
+.blog-img img {
+	width: 100%;
+}
+.blog-text {
+	padding: 10px;
+	margin-left: 20px;
+}
+.single-blog {
+	margin-bottom: 30px;
+}
+.blog-text > p {
+	font-size: 14px;
+	line-height: 22px;
+}
+.footer-design-by.text-right {
+	text-align: center !important;
+}
+/*Index Page 2 CSS*/
+.pr-230 {
+	padding-right: 15px;
+}
+.pl-230 {
+	padding-left: 15px;
+}
+.header-absolute {
+	position: static;
+}
+.header-style-2 .book-now-btn a{
+    color: #021832;
+    border-color: #021832;
+}
+.header-style-2 .book-now-btn a:hover{
+    color: #fff;        
+} 
+.single-slider.single-slider-2 {
+	height: 300px;
+}
+.hero-slider-content.slider-content-2 h1 {
+	font-size: 30px;
+	line-height: 36px;
+}
+.booking-area-style-2 .box-select {
+	flex-wrap: wrap;
+}
+.booking-area-style-2 .box-select .select {
+	background: rgba(4,31,64,1);
+}
+.box-select .select label {
+	margin-bottom: 20px;
+}
+.booking-area-style-2 .box-select .select::after {
+	top: 85px;
+	right: 30px;
+}
+.booking-area-style-2 form.search-form {
+	margin-top: 60px;
+}
+.booking-area-style-2 .box-select input {
+	padding-left: 0;
+}
+.booking-area-style-2 .select > select {
+	padding-left: 0;
+}
+.about-style-2 .about-container h3 {
+	margin-left: 0;
+	margin-bottom: 20px;
+}
+.about-style-2 .about-container {
+	padding-left: 0;
+}
+.about-style-2 .welcome-image-area {
+	text-align: left;
+	position: relative;
+	display: block;
+}
+.about-style-2 .secound-iamge-area img {
+	width: 100%;
+}
+.about-style-2 .first-welcome-image {
+	top: 0;
+}
+.discount-content {
+	margin-bottom: 30px;
+}
+.single-blog-style-2 .blog-post-info {
+	bottom: 52%;
+}
+.service-style-2 .service-menu-area {
+	padding: 0;
+}
+/*Room Grid Page CSS*/
+.list__categories.single-room .desc__categories .categories__content {
+	padding: 15px 15px 15px;
+}
+.product-pagination > ul > li > a {
+	height: 30px;
+	line-height: 28px;
+	width: 30px;
+}
+/*Room List Page CSS*/
+.room-price {
+	float: none;
+}
+.room-price ul li p {
+	font-size: 14px;
+}
+.room-price ul li:last-child p {
+	font-size: 22px;
+}
+.book-room {
+	float: none;
+	margin-top: 5px;
+}
+.cost {
+	width: 120px;
+}
+.cost > h2 {
+	font-size: 26px;
+}
+.cost > span {
+	padding-top: 5px;
+}
+.question-area {
+	margin-bottom: 60px;
+}
+/*Blog Page CSS*/
+.blog-sidebar.right-sidebar {
+  padding-left: 15px;
+}
+.blog-sidebar {
+  padding-right: 15px;
+}
+.blog-meta > li {
+  line-height: 18px;
+  margin-right: 15px;
+}
+.blog-content > h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  line-height: 22px;
+}
+.blog-content > p {
+	font-size: 14px;
+}
+.blog-post-list > li {
+	font-size: 14px;
+	line-height: 26px;
+}
+.blog-bottom-content p {
+	font-size: 14px;
+}
+.blog-content > a {
+  margin-top: 5px;
+    font-size: 12px;
+}
+.blog-sidebar {
+  margin-top: 50px;
+}
+.blog-pagination {
+  text-align: center !important;
+}
+.rc-post-content .widget-date {
+  margin-bottom: 5px;
+}
+.rc-post-content > h4 {
+  font-size: 14px;
+  line-height: 18px;
+}
+.blog-post-gallery {
+  margin: 20px 0;
+  max-width: 100%;
+}
+.blog-post-list {
+  margin: 20px 0;
+}
+blockquote {
+  padding: 40px;
+  padding-left: 30px;
+  padding-right: 18px;
+  font-size: 16px;
+}
+blockquote::before {
+  left: 15px;
+  top: 10px;
+}
+.blog-author-box {
+  padding: 20px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.blog-author-content {
+  padding-top: 15px;
+}
+.comment {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 30px;
+}
+.comment-content {
+  padding-top: 15px;
+}
+.comment.reply {
+  margin-left: 30px;
+}
+/*contact page css*/
+.contact-address {
+    padding-right: 15px;
+}
+.contact-information {
+    padding: 60px 35px;
+}
+.contact-form {
+    margin-top: 50px;
+}
+
+    
+    
+    
+
+} 
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+.hero-slider-content > h1 {
+	font-size: 40px;
+}
+.hero-slider-content.slider-content-2 h1 {
+	font-size: 54px;
+	line-height: 60px;
+} 
+.booking-area-style-2 .box-select .select {
+	flex: 0 0 46%;
+	margin: 8.60px;
+    background-color: rgba(4,31,64,1);
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.booking-area-style-2 .box-select .select::after {
+	top: 110px;
+	right: 20px;
+}
+.booking-area-style-2 .box-select .select:last-child {
+	flex: 0 0 100%;
+	margin: auto;
+	text-align: center;
+}
+.list__categories.single-room .desc__categories .categories__content {
+	padding: 30px 30px 30px;
+}
+.portfoloi__inner {
+	padding-bottom: 30px;
+}
+.social-network > li {
+	display: inline-block;
+	margin: 0 3px;
+}
+.footer-copyright {
+	text-align: center;
+}
+
+
+
+    
+
+}
