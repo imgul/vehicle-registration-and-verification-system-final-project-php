@@ -2,6 +2,8 @@ const resultRows = document.querySelectorAll("tr");
 const editBtns = document.querySelectorAll(".edit-button");
 const deleteBtns = document.querySelectorAll(".delete-button");
 const table = document.querySelector("table");
+const addRouteForm = document.querySelector("#addRouteForm");
+
 
 resultRows.forEach(row =>
     row.addEventListener("click", editOrDelete)
@@ -16,7 +18,7 @@ function collapseForm(evt) {
         const collapseRow = evt.target.parentElement.parentElement.parentElement.parentElement;
 
         // enable the edit button
-        const editBtn = collapseRow.previousElementSibling.children[2].children[0];
+        const editBtn = collapseRow.previousElementSibling.children[6].children[0];
         editBtn.disabled = false;
         editBtn.classList.remove("disabled");
 
@@ -34,10 +36,17 @@ function editOrDelete(evt) {
 
         const editRow = document.createElement("tr");
         editRow.innerHTML = `
-        <td colspan="5">
+        <td colspan="12">
             <form class="editRouteForm d-flex justify-content-between" action="${evt.target.dataset.link}" method="POST">
+                
                 <input type="hidden" name="id" value="${evt.target.dataset.id}">
-                <input type="text" class="form-control" name="busno" value="${evt.target.dataset.busno}">
+                <input type="text" class="form-control" name="owner-name" value="${evt.target.dataset.owner_name}" placeholder="Vehicle Owner Name">
+                
+                <input type="text" class="form-control" name="owner-phone" value="${evt.target.dataset.owner_phone}" placeholder="Owner Phone">
+                    
+                <input type="text" class="form-control" name="owner-address" value="${evt.target.dataset.owner_address}" placeholder="Owner Address">
+
+                <input type="text" class="form-control" name="other-specs" value="${evt.target.dataset.other_specs}" placeholder="Other Specifications">
 
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-success btn-sm" name="edit">SUBMIT</button>
@@ -49,7 +58,6 @@ function editOrDelete(evt) {
 
         this.after(editRow);
     }
-
     // if delete button is clicked
     else if (evt.target.className.includes("delete-button")) {
         const deleteInput = document.querySelector("#delete-id");
@@ -57,19 +65,29 @@ function editOrDelete(evt) {
     }
 }
 
-// Add Bus Form validation
-const addBusForm = document.querySelector("#addBusForm");
 
-addBusForm.addEventListener("submit" /*, validateForm*/);
 
-// function validateForm(evt) {
-//     const busnoInput = addBusForm.elements.busno;
-//     const regex = new RegExp("[a-z]+", "g");
-//     const errorSpan = document.querySelector("#error");
+// Route element
+const routesBody = document.body;
+// AddRouteForm
+const busJsonInput = document.querySelector("#busJson");
+const busJson = busJsonInput.value;
+const searchBoxes = document.querySelectorAll(".searchBus");
+const searchInputs = document.querySelectorAll(".busnoInput");
+const suggBoxes = document.querySelectorAll(".sugg");
+// Here is the bus data to be shown in the add Modal
+let data = JSON.parse(busJson);
 
-//     if (busnoInput.value.match(regex)) {
-//         evt.preventDefault();
-//         errorSpan.innerText = "Bus no should have capital letters";
-//     }
-// }
+routesBody.addEventListener("click", listenforBusSearches);
+function listenforBusSearches(evt) {
+    if (evt.target.className.includes("busnoInput")) {
+        const searchInput = evt.target;
+        const searchBox = searchInput.parentElement;
+        const suggBox = searchInput.nextElementSibling;
+        searchInput.addEventListener("input", showSuggestions);
+        suggBox.addEventListener("click", selectSuggestion);
+    }
+}
 
+
+$('#vehicleTable').DataTable();

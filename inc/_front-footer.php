@@ -58,12 +58,12 @@
                                 <h3>Verify Vehicle</h3>
                             </div>
                             <div class="footer-mailchimp">
-                                <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="popup-subscribe-form validate" novalidate>
+                                <form action="check-vehicle.php" method="GET" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="popup-subscribe-form validate" novalidate>
                                     <div id="mc_embed_signup_scroll">
                                         <div id="mc-form" class="mc-form subscribe-form">
-                                            <input id="mc-email" type="text" autocomplete="off" placeholder="Enter Number" />
+                                            <input name="number" id="mc-email" type="text" autocomplete="off" placeholder="Enter Number" />
                                             <span class="icon"><i class="fa fa-sm fa-search"></i></span>
-                                            <button id="mc-submit">Check Vehicle</button>
+                                            <button type="submit" name="search" id="mc-submit">Check Vehicle</button>
                                         </div>
                                     </div>
                                 </form>

@@ -12,10 +12,9 @@ $conn = db_connect();
 if (!$conn)
     die("Oh Shoot!! Connection Failed");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (($_SERVER["REQUEST_METHOD"] == "GET") && isset($_GET["number"])) {
     // Form handle
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $number = $_GET['number'];
 
 
     // Check if passwords match
@@ -23,49 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $msg_detail = "";
 
     // Check if user exists
-    $exist_user = exist_user($conn, $email);
-
-    if ($exist_user) {
-        // echo "<h1>email: " . $email . "</h1>";
-        // echo "<h1>password: " . $password . "</h1>";
-        // Check if password is correct
-        $sql = "SELECT * FROM `users` WHERE email='$email'";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
-        $user_password = $row["password"];
-        $user_id = $row["id"];
-        $user_fname = $row["fname"];
-        $user_lname = $row["lname"];
-        $user_email = $row["email"];
-        $user_phone = $row["phone"];
-        $user_type = $row["is_admin"];
-
-        if (password_verify($password, $user_password)) {
-            // Set session variables
-            session_start();
-            $_SESSION["user_id"] = $user_id;
-            $_SESSION["user_fname"] = $user_fname;
-            $_SESSION["user_lname"] = $user_lname;
-            $_SESSION["user_email"] = $user_email;
-            $_SESSION["user_phone"] = $user_phone;
-            $_SESSION["user_role"] = $user_type;
-            $_SESSION["loggedIn"] = true;
-            if ($user_type == 1) {
-                header("location: admin/index.php?msg_type=success&msg_detail=Login Successful");
-            } else {
-                header("location: index.php?msg_type=success&msg_detail=Login Successful");
-            }
-            $msg_type = "success";
-            $msg_detail = "Success: You are logged in " . $user_type;
-            echo "<h1>email: " . $email . "</h1>";
-            echo "<h1>password: " . $password . "</h1>";
-        } else {
-            $msg_type = "danger";
-            $msg_detail = "Error: Password is incorrect";
-        }
+    $exist_vehicle = exist_vehicle($conn, $number);
+    if ($exist_vehicle) {
+        $msg_type = "success";
+        $msg_detail = "Vehicle is Registered.";
     } else {
         $msg_type = "danger";
-        $msg_detail = "Error: User does not exist";
+        $msg_detail = "Vehicle is not Registered!!";
     }
 }
 
@@ -80,7 +43,7 @@ require 'inc/_alert.php';
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login | UoS Bus</title>
+    <title>Check Vehicle | <?= $website_name; ?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
@@ -110,7 +73,7 @@ require 'inc/_alert.php';
     <!-- Modernizr Js -->
     <script src="js/vendor/modernizr-2.8.3.min.html"></script>
 
-    <?php $page = 'login'; ?>
+    <?php $page = 'check-vehicle'; ?>
 
 </head>
 
@@ -140,11 +103,11 @@ require 'inc/_alert.php';
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Check Vehicle</h1>
                                     </div>
-                                    <form class="user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                                    <form class="user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
                                         <div class="form-group">
-                                            <input name="vehicle-number" type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Vehicle Number">
+                                            <input name="number" type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Vehicle Number">
                                         </div>
-                                        <button name="search-vehicle" type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button name="search" type="submit" class="btn btn-primary btn-user btn-block">
                                             Search Vehicle
                                         </button>
                                     </form>

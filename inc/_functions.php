@@ -5,12 +5,21 @@ function check_connection()
     echo "<h1>Connected successfully<h1>";
 }
 
+// Form Validation
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 function db_connect()
 {
     $servername = 'localhost';
     $username = 'root';
     $password = '';
-    $database = 'vrs';
+    $database = 'vrvs';
 
     $conn = mysqli_connect($servername, $username, $password, $database);
     return $conn;
@@ -41,22 +50,21 @@ function exist_routes($conn, $viaCities, $depdate, $deptime)
     return false;
 }
 
-// function exist_customers($conn, $name, $phone)
-// {
-//     $sql = "SELECT * FROM `customers` WHERE customer_name='$name' AND customer_phone='$phone'";
-
-//     $result = mysqli_query($conn, $sql);
-//     $num = mysqli_num_rows($result);
-//     if ($num) {
-//         $row = mysqli_fetch_assoc($result);
-//         return $row["customer_id"];
-//     }
-//     return false;
-// }
-
-function exist_buses($conn, $busno)
+function exist_vehicle($conn, $number)
 {
-    $sql = "SELECT * FROM `buses` WHERE bus_no='$busno'";
+    $sql = "SELECT * FROM `vehicles` WHERE number='$number'";
+
+    $result = mysqli_query($conn, $sql);
+    $num = mysqli_num_rows($result);
+    if ($num) {
+        $row = mysqli_fetch_assoc($result);
+        return $row["id"];
+    }
+    return false;
+}
+function exist_company($conn, $name)
+{
+    $sql = "SELECT * FROM `companies` WHERE name='$name'";
 
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
@@ -92,14 +100,14 @@ function bus_free($conn, $busno)
     $result = mysqli_query($conn, $sql);
 }
 
-function busno_from_routeid($conn, $id)
+function number_from_vehicle_id($conn, $id)
 {
-    $sql = "SELECT * from routes WHERE id=$id";
+    $sql = "SELECT * from vehicles WHERE id=$id";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
     if ($row) {
-        return $row["bus_no"];
+        return $row["number"];
     }
     return false;
 }

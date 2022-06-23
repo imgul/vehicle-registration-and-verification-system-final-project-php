@@ -67,69 +67,6 @@ require 'inc/_info.php';
 				<!--Single Slider End-->
 			</div>
 		</div>
-		<!--Slider Area End-->
-		<!--Booking Area Start-->
-		<!-- <div class="booking-area booking-area-style-2">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<form action="#" method="post" class="search-form">
-							<div class="form-container">
-								<div class="box-select">
-									<div class="select date">
-										<div class="new-label">
-											<label>Check in</label>
-										</div>
-										<input name="user-select-date" id="user-select-date" data-select="datepicker" placeholder="Select Date" type="text">
-									</div>
-									<div class="select date">
-										<div class="new-label">
-											<label>Check out</label>
-										</div>
-										<input name="user-select-to-date" id="user-select-to-date" data-select="datepicker" placeholder="Select Date" type="text">
-									</div>
-									<div class="select arrow">
-										<div class="new-label">
-											<label>Adults</label>
-										</div>
-										<select name="adults">
-											<option>ADULTS</option>
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
-											<option>6</option>
-										</select>
-									</div>
-									<div class="select arrow">
-										<div class="new-label">
-											<label>Children</label>
-										</div>
-										<select name="children">
-											<option>CHILDREN</option>
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
-											<option>6</option>
-										</select>
-									</div>
-									<div class="select button">
-										<div class="new-label">
-											<label>Availability</label>
-										</div>
-										<button type="submit" class="search default-btn">Check Here</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<!--Booking Area End-->
 		<!--About Area Start-->
 		<div class="about-area about-style-2 pt-100 pb-120">
 			<div class="container">
@@ -500,7 +437,5 @@ require 'inc/_info.php';
 
 	</script>
 </body>
-
-<!-- Mirrored from htmldemo.net/VRS/VRS/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 11 Jun 2022 15:21:11 GMT -->
 
 </html>

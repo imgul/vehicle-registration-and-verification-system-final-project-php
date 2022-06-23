@@ -2,7 +2,10 @@
 <?php require '../inc/_admin-check.php'; ?>
 
 <?php
+require '../inc/_info.php';
 require '../inc/_functions.php';
+$conn = db_connect();
+require '../inc/_getJSON.php';
 $conn = db_connect();
 
 ?>
@@ -18,7 +21,7 @@ $conn = db_connect();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Buses | UoS Bus</title>
+    <title>Add Vehicle | <?= $website_name ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="../assets/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -27,7 +30,7 @@ $conn = db_connect();
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <?php $page = "bus"; ?>
+    <?php $page = "add-vehicle"; ?>
 
 </head>
 
@@ -42,38 +45,41 @@ $conn = db_connect();
             2. Check if the request method is POST
         */
     if ($loggedIn && $_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["add_bus"])) {
+        if (isset($_POST["add_vehicle"])) {
             // Should be validated client-side
-            $busno = strtoupper($_POST["busno"]);
-            $buscapacity = $_POST["buscapacity"];
+            $number = test_input(strtoupper($_POST["number"]));
+            $company = test_input($_POST["company"]);
+            $type = test_input($_POST["type"]);
+            $color = test_input($_POST["color"]);
+            $date = test_input($_POST["date"]);
+            $owner_name = test_input($_POST["owner-name"]);
+            $owner_phone = test_input($_POST["owner-phone"]);
+            $owner_address = test_input($_POST["owner-address"]);
+            $other_specs = test_input($_POST["other-specs"]);
 
-            $bus_exists = exist_buses($conn, $busno);
-            $bus_added = false;
+            $vehicle_exists = exist_vehicle($conn, $number);
+            $vehicle_added = false;
 
-            if (!$bus_exists) {
+            if (!$vehicle_exists) {
                 // Route is unique, proceed
-                $sql = "INSERT INTO `buses` (`bus_no`, `bus_capacity`) VALUES ('$busno', '$buscapacity')";
+                $sql = "INSERT INTO `vehicles` (`number`, `company`, `type`, `color`, `owner_name`, `owner_phone`, `owner_address`, `other_specs`, `date_purchase`) VALUES ('$number', '$company', '$type', '$color', '$owner_name', '$owner_phone', '$owner_address', '$other_specs', '$date')";
 
                 $result = mysqli_query($conn, $sql);
 
                 if ($result)
-                    $bus_added = true;
+                    $vehicle_added = true;
             }
 
-            if ($bus_added) {
+            if ($vehicle_added) {
                 // Show success alert
                 echo '<div class="my-0 alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Successful!</strong> Bus Information Added.
+                        <strong>Successful!</strong> Vehicle Information Added.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>';
-                // Add the bus to seats table
-                $seatSql = "INSERT INTO `seats` (`bus_no`) VALUES ('$busno');";
-                $result = mysqli_query($conn, $seatSql);
             } else {
-
                 // Show error alert
                 echo '<div class="my-0 alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Error!</strong> Bus Already Exists.
+                        <strong>Error!</strong> Vehicle Number Already Exists.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>';
             }
@@ -168,73 +174,95 @@ $conn = db_connect();
     ?>
 
     <!-- Begin Page Content -->
-    <div class="container-fluid">
-
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">All Buses</h1>
-        </div>
-
-        <!-- bootstrap modal button -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-            <i class="fas fa-plus mr-1"></i> Add New Bus
-        </button>
-
-        <!-- Show Bookings -->
-        <?php
-        $resultSql = "SELECT * FROM `buses` ORDER BY bus_created DESC";
-
-        $resultSqlResult = mysqli_query($conn, $resultSql);
-
-        if (!mysqli_num_rows($resultSqlResult)) { ?>
-            <!-- Buses are not present -->
-            <div class="container mt-4">
-                <div id="noCustomers" class="alert alert-dark " role="alert">
-                    <h1 class="alert-heading">No Buses Found!!</h1>
-                    <p class="fw-light">Be the first person to add one!</p>
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Add New Vehicle</h1>
+                            </div>
+                            <form id="vehicleTable" class="user needs-validation" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label for="vehicleNumber">Vehicle Number</label>
+                                        <input name="number" type="text" class="form-control" id="vehicleNumber" placeholder="Vehicle Number" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <?php
+                                        $compSql = "SELECT * FROM `companies`";
+                                        $compResult = mysqli_query($conn, $compSql);
+                                        $compRow = mysqli_fetch_all($compResult, MYSQLI_ASSOC);
+                                        $compLength = count($compRow);
+                                        ?>
+                                        <label for="vehicleCompany">Vehicle Company</label>
+                                        <select name="company" id="vehicleCompany" class="form-select" aria-label="Select Vehicle Company">
+                                            <option value="" disabled selected>Select Vehicle Company</option>
+                                            <?php
+                                            for ($i = 0; $i < $compLength; $i++) {
+                                                echo "<option value='" . $compRow[$i]['name'] . "'>" . strtoupper($compRow[$i]['name'])  . "</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4 mb-3 mb-sm-0">
+                                        <label for="vehicleType">Vehicle Type</label>
+                                        <select name="type" id="vehicleType" class="form-select" aria-label="Select Vehicle Type">
+                                            <option value="" disabled selected>Select Vehicle Type</option>
+                                            <option value="bike">Bike</option>
+                                            <option value="car">Car</option>
+                                            <option value="heavy-vehicle">Heavy Vehicle</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="vehicleColor">Vehicle Color</label>
+                                        <select name="color" id="vehicleColor" class="form-select" aria-label="Select Vehicle Color">
+                                            <option value="" disabled selected>Select Vehicle Color</option>
+                                            <option value="black">Black</option>
+                                            <option value="white">White</option>
+                                            <option value="red">Red</option>
+                                            <option value="blue">Blue</option>
+                                            <option value="green">Green</option>
+                                            <option value="purple">Purple</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="vehiclePurchase">Purchase Date</label>
+                                        <input class="form-control date" type="date" name="date" id="vehiclePurchase">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label for="InputOwnerName">Owner Name</label>
+                                        <input name="owner-name" type="text" class="form-control" id="InputOwnerName" placeholder="Owner Name" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="InputPhone">Owner Phone</label>
+                                        <input name="owner-phone" type="text" class="form-control" id="InputPhone" placeholder="Phone Number" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="InputAddress">Owner Address</label>
+                                    <input name="owner-address" type="text" class="form-control" id="InputAddress" placeholder="Owner Address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="InputOtherSpec">Other Specifications (optional)</label>
+                                    <textarea name="other-specs" class="form-control" id="InputOtherSpec" placeholder="Other Specifications"></textarea>
+                                </div>
+                                <button type="submit" name="add_vehicle" id="addVehicleFormButton" class="btn btn-success btn-user btn-block">
+                                    Add Vehicle <i class="fas fa-fw fa-plus"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-        <?php } else { ?>
-            <!-- If Buses are present -->
-            <table class="table table-bordered table-hover mt-5">
-                <thead>
-                    <th>#</th>
-                    <th>Bus Number</th>
-                    <th>Actions</th>
-                </thead>
-                <?php
-                $ser_no = 0;
-                while ($row = mysqli_fetch_assoc($resultSqlResult)) {
-                    $ser_no++;
-                    // echo "<pre>";
-                    // var_export($row);
-                    // echo "</pre>";
-
-                    $id = $row["id"];
-                    $busno = $row["bus_no"];
-                ?>
-                    <tr>
-                        <td>
-                            <?php
-                            echo $ser_no;
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            echo $busno;
-                            ?>
-                        </td>
-                        <td>
-                            <button class="btn btn-primary btn-sm edit-button " data-link="<?php echo $_SERVER['REQUEST_URI']; ?>" data-id="<?php echo $id; ?>" data-busno="<?php echo $busno; ?>">Edit</button>
-                            <button class="btn btn-danger btn-sm delete-button" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php echo $id; ?>">Delete</button>
-                        </td>
-                    </tr>
-                <?php
-                }
-                ?>
-            </table>
-        <?php } ?>
-
+        </div>
 
     </div>
     <!-- /.container-fluid -->
@@ -248,7 +276,7 @@ $conn = db_connect();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add A Bus</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add A Vehicle</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -301,7 +329,7 @@ $conn = db_connect();
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <span>Copyright &copy; UoS Bus <?php echo date('Y'); ?></span>
+                <span>Copyright &copy; <?= $website_short_name; ?> <?php echo date('Y'); ?></span>
             </div>
         </div>
     </footer>
@@ -318,25 +346,6 @@ $conn = db_connect();
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="../logout.php">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="../assets/vendor/js/jquery-3.6.0.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -345,7 +354,7 @@ $conn = db_connect();
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Admin Bus -->
-    <script src="js/admin-bus.js"></script>
+    <script src="js/admin-add-vehicle.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 

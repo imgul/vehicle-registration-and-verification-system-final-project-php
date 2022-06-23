@@ -16,6 +16,7 @@
                         <nav>
                             <ul class="main-menu">
                                 <li class="<?php if ($page == 'index') echo 'active'; ?>"><a href="index.php">HOME</a>
+                                <li class="<?php if ($page == 'check-vehicle') echo 'active'; ?>"><a href="check-vehicle.php">Check Vehicle</a>
                                 <li class="<?php if ($page == 'contact') echo 'active'; ?>"><a href="contact.php">Contact</a></li>
                                 <?php
                                 // show menu only if not logged in
@@ -27,26 +28,13 @@
                                 }
                                 ?> <?php
                                     // show menu only when logged in
-                                    if (isset($_SESSION['loggedIn'])) {
-                                    ?>
-                                    <li class="<?php if ($page == 'login') echo 'active'; ?>"><a href="#">My Account</a>
-                                        <!-- <ul>
-                                            <li class="<?php if ($page == 'bookings') echo 'active'; ?>"><a href="bookings.php">My Bookings</a></li>
-                                            <li class="<?php if ($page == 'newbooking') echo 'active'; ?>"><a href="newbooking.php">New Booking</a></li>
-                                            <li class="<?php if ($page == 'forgot-password') echo 'active'; ?>"><a href="forgot-password.php">Forgot Password</a></li>
-                                        </ul> -->
-                                    </li>
-                                    <li><a href="add-vehicle.php"><i class="fas fa-plus"></i> Add Vehicle</a></li>
-                                    <li><a class="logoutBtn" href="#">Logout</a></li>
-                                    <?php
-                                        // show menu only if logged in and is admin
-                                        if (isset($_SESSION['loggedIn']) && $_SESSION['user_role'] == 1) {
-                                            echo '<li><a href="admin/index.php">Admin Panel</a></li>';
-                                        }
-                                    ?>
-                                <?php
+                                    if (isset($_SESSION['loggedIn']) && ($_SESSION["user_role"] == 1)) {
+                                        echo '<li><a href="admin/add-vehicle.php"><i class="fas fa-plus"></i> Add Vehicle</a></li>';
+                                        echo '<li><a href="admin/index.php">Admin Panel</a></li>';
                                     }
-                                ?>
+                                    if (isset($_SESSION['loggedIn']))
+                                        echo '<li><a class="logoutBtn" href="./logout.php">Logout</a></li>';
+                                    ?>
                             </ul>
                         </nav>
                     </div>
